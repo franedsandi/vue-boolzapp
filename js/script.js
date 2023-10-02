@@ -218,5 +218,4 @@ createApp({
       return this.combineAndSortMessages();
     },
   },
-
 }).mount('#app');
