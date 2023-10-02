@@ -25,10 +25,10 @@
         <div class="top">
           <div class="user d-flex align-items-center">
             <div class="user-foto">
-              <img :src="myself.avatar" alt="">
+              <img :src="user.avatar" alt="">
             </div>
             <div class="user-name fs-5 fw-semibold">
-              {{ myself.user }}
+              {{ user.name }}
             </div>
             <div class="stories">
               <i class="fa-solid fa-circle-notch"></i>
@@ -112,7 +112,7 @@
         <div class="chatbox">
           <div v-for="message in sortedMessages" :class="{ 'message sent': message.status === 'sent', 'message received': message.status === 'received' }">
             {{ message.message }}
-            <p>12:00</p>
+            <p>{{ getMessageTime(message) }}</p>
           </div>
         </div>
         <div class="chatbar d-flex align-items-center">
