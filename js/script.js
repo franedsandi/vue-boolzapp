@@ -168,8 +168,8 @@ createApp({
             },
           ],
         },
-      ],
-    };
+      ],selectedContact: null,
+     };
   },
   methods: {
     getLastMessage(contact) {
@@ -200,5 +200,23 @@ createApp({
       }
       return '';
     },
+    selectContact(contact) {
+      this.selectedContact = contact;
+    },
+    combineAndSortMessages() {
+      if (this.selectedContact) {
+        const messages = this.selectedContact.messages;
+        return messages.sort((a, b) => {
+          return this.parseDate(a.date) - this.parseDate(b.date);
+        });
+      }
+      return [];
+    },
   },
+  computed: {
+    sortedMessages() {
+      return this.combineAndSortMessages();
+    },
+  },
+
 }).mount('#app');

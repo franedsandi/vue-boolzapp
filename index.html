@@ -57,7 +57,7 @@
           <input type="text" class="search border-0" placeholder="cerca o inizia una nuova chat">
         </div>
         <div class="contacts">
-          <div v-for="contact in contacts" class="contact d-flex align-items-center">
+          <div v-for="contact in contacts" class="contact d-flex align-items-center" @click="selectContact(contact)">
             <div class="contact-foto">
               <img :src="contact.avatar" alt="">
             </div>
@@ -70,9 +70,30 @@
         </div>
       </div>
       <div class="right">
-        <div class="top d-flex align-items-center">
+        <div class="top d-flex align-items-center" v-if="selectedContact">
           <div class="chat-image">
-            <img src="" alt="">
+            <img :src="selectedContact.avatar" alt="">
+          </div>
+          <div class="chat-info">
+            <div class="contact-name">
+              {{ selectedContact.name }}
+            </div>
+            <div class="lasttimeonline">
+              <span>Last time online {{ getLastMessageTime(selectedContact) }}</span>
+            </div>
+          </div>
+          <div class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="attatch-icon">
+            <i class="fa-solid fa-paperclip"></i>
+          </div>
+          <div class="options">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="top d-flex align-items-center" v-else>
+          <div class="chat-image">
           </div>
           <div class="chat-info">
             <div class="contact-name"></div>
@@ -89,11 +110,22 @@
           </div>
         </div>
         <div class="chatbox">
-          <div class="filler"></div>
+          <div v-for="message in sortedMessages" :class="{ 'message sent': message.status === 'sent', 'message received': message.status === 'received' }">
+            {{ message.message }}
+            <p>12:00</p>
+          </div>
+        </div>
+        <div class="chatbar d-flex align-items-center">
+          <div class="emoji-icon">
+            <i class="fa-regular fa-face-smile"></i>
+          </div>
+          <input type="text" placeholder="Scrivi un messagio" class="send-message">
+          <div class="voice-icon">
+            <i class="fa-solid fa-microphone"></i>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
   <!-- JS -->
   <script src="./js/script.js"></script>
