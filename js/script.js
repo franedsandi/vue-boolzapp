@@ -170,5 +170,27 @@ createApp({
         }
       ]
     }
+  },methods: {
+    getLastMessage(contact) {
+      const lastMessage = contact.messages[contact.messages.length - 1];
+      return lastMessage ? lastMessage.message : '';
+    },
+    parseDate(dateString) {
+      const [datePart, timePart] = dateString.split(' ');
+      const [day, month, year] = datePart.split('/');
+      const [hours, minutes, seconds] = timePart.split(':');
+      return new Date(year, month - 1, day, hours, minutes, seconds);
+    },
+    getLastMessageTime(contact) {
+      const lastMessage = contact.messages[contact.messages.length - 1];
+      if (lastMessage) {
+        const messageDate = this.parseDate(lastMessage.date);
+        const hours = messageDate.getHours();
+        const minutes = messageDate.getMinutes();
+        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        return formattedTime;
+      }
+      return '';
+    },
   },
 }).mount("#app");
