@@ -119,3 +119,7 @@
   height: 100%;
   border: 1px solid black;
 }
+.last-message{
+  color: lightgray;
+  font-size: 13px;
+}
