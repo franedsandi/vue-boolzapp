@@ -72,6 +72,17 @@
   height: 75px;
   border-top: 1px solid lightgrey;
 }
+.voice-icon:hover,
+.emoji-icon:hover,
+.searchbar:hover,
+.stories:hover,
+.messages:hover,
+.options:hover,
+.search-icon:hover,
+.attatch-icon:hover,
+.contact:hover{
+  cursor: pointer;
+}
 
 .icon,
 .contact-foto,
