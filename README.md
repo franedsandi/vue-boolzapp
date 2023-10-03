@@ -24,5 +24,14 @@ Per gestire le date, può essere utile la libreria Luxon
 7. with v-for using as structure the messages fill the gaps with the info in the array, picking the message time made before
 8. ad an event listener click that will display the clicked contact chat when clicked
 9. give the class sent and received to change the colors of the background of each message, the class message will have the basis of a regular message, the only diference between the classes is the color and the float, verify you are using clearfix...
+10. using v-model the text inside the input send-message will be added into the array of messages with the status sent when i press enter, also with format date it will display the actual date (dd/mm//yyyy hh:mm)
+11. set a timeout to generate a message with the status received with the message Ok! , formatedDateTime for the actual time when the massage is "received"
+12. aply a filter for the input search , that will filter the character of each name in the contact list and will display only the contacts with the characters in the input
+13. separate the contacts in a data.js as a module, export de module to script.js 
+14. add a dropdown to message sent / received with the options mensage info and delete message
+15. when i press delete message the message get the class hide (display none)
+16. add a dropdown to contact with the options contact info and delete chat
+17. when i press delete chat the contact will get the class hide (display none)
+
 
 
