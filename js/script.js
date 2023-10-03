@@ -1,16 +1,17 @@
-import contacts from './data.js';
-
+import contacts from "./data.js";
 const { createApp } = Vue;
+
 createApp({
   data() {
     return {
-      activeContact: null,
-      selectedContact: null,
       user: {
         name: 'Sofia',
         avatar: './img/avatar_io.jpg',
       },
-      contacts: contacts, // Aquí importamos los datos de contacts.js
+      contacts: contacts,
+      selectedContact: null,
+      activeContactIndex: null,
+      newMessageText: '',
     };
   },
   methods: {
@@ -59,13 +60,33 @@ createApp({
       }
       return [];
     },
-    setActiveContact(contact) {
-    this.activeContact = contact;
-  },
+    setActiveContact(contact, index) {
+      this.selectedContact = contact;
+      this.activeContactIndex = index;
+    },
+    sendMessage() {
+      if (this.selectedContact && this.newMessageText) {
+        const currentTime = new Date();
+        const formattedTime = `${String(currentTime.getHours()).padStart(2, '0')}:${String(currentTime.getMinutes()).padStart(2, '0')}`;
+        const newMessage = {
+          date: currentTime.toLocaleString(),
+          message: this.newMessageText,
+          status: 'sent',
+        };
+        this.selectedContact.messages.push(newMessage);
+        this.newMessageText = '';
+
+      }
+    },
   },
   computed: {
     sortedMessages() {
       return this.combineAndSortMessages();
+    },
+    contactClass() {
+      return (index) => ({
+        active: index === this.activeContactIndex,
+      });
     },
   },
 }).mount('#app');

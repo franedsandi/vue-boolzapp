@@ -22,12 +22,14 @@
 .container .left {
   width: 30%;
   height: 100%;
+  background-color: green;
   border-right: 1px solid #D6D6D6;
 }
 
 .container .right {
   width: 70%;
   height: 100%;
+  background-color: blue;
 }
 
 .container .top {
@@ -82,7 +84,7 @@
   cursor: pointer;
 }
 .contact:hover{
-  background-color: rgb(241, 241, 241);
+  background-color: #E8E7E9;
 }
 
 .icon,
@@ -126,9 +128,7 @@
 .messages,
 .options,
 .search-icon,
-.attatch-icon,
-.voice-icon,
-.emoji-icon  {
+.attatch-icon {
   width: 40px;
   text-align: center;
   font-size: 20px;
@@ -138,6 +138,9 @@
 .voice-icon,
 .emoji-icon {
   width: 80px;
+  text-align: center;
+  font-size: 20px;
+  color: #B1B1B1;
 }
 
 .chatbox {
@@ -206,5 +209,6 @@
 }
 
 .active{
-background-color: rgb(241, 241, 241);
+  background-color: #E8E7E9;
+  border: 2px solid grey
 }
