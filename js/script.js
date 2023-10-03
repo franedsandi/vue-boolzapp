@@ -12,6 +12,7 @@ createApp({
       selectedContact: null,
       activeContactIndex: null,
       newMessageText: '',
+      searchQuery: '',
     };
   },
   methods: {
@@ -98,7 +99,7 @@ createApp({
             status: 'received',
           };
           this.selectedContact.messages.push(receivedMessage);
-        }, 1000);
+        }, 1000); // 1000 ms = 1 segundo
       }
     }
   },
@@ -110,6 +111,10 @@ createApp({
       return (index) => ({
         active: index === this.activeContactIndex,
       });
+    },
+    filteredContacts() {
+      const query = this.searchQuery.toLowerCase();
+      return this.contacts.filter(contact => contact.name.toLowerCase().includes(query));
     },
   },
 }).mount('#app');
