@@ -19,9 +19,13 @@
   <title>Boolzapp 1.0</title>
 </head>
 <body>
+  <!-- background -->
   <div id="app" class="background">
+    <!-- container -->
     <div class="container d-flex">
+      <!-- leftbar -->
       <div class="left">
+        <!-- user info -->
         <div class="top">
           <div class="user d-flex align-items-center">
             <div class="user-foto">
@@ -41,6 +45,7 @@
             </div>
           </div>
         </div>
+        <!-- silence block -->
         <div class="blueblock d-flex align-items-center">
           <div class="icon">
             <div class="silence d-flex justify-content-center align-items-center">
@@ -52,12 +57,24 @@
               <a href="#">Attiva notifiche desktop</a>
           </div>
         </div>
+        <!-- search bar -->
         <div class="searchbar d-flex align-items-center">
-          <span class="search-button"><i class="fa-solid fa-magnifying-glass"></i></span>
-          <input type="text" class="search border-0 me-3" placeholder="cerca o inizia una nuova chat" v-model="searchQuery">
+          <span class="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input 
+          type="text" 
+          class="search border-0 me-3" 
+          placeholder="cerca o inizia una nuova chat" 
+          v-model="searchQuery">
         </div>
+        <!-- contacts -->
         <div class="contacts">
-          <div v-for="(contact, index) in filteredContacts" class="contact d-flex align-items-center" @click="setActiveContact(contact, index)" :class="contactClass(index)">
+          <div 
+          v-for="(contact, index) in filteredContacts" 
+          class="contact d-flex align-items-center" 
+          @click="setActiveContact(contact, index)" 
+          :class="contactClass(index)">
             <div class="contact-foto">
               <img :src="contact.avatar" alt="">
             </div>
@@ -69,7 +86,9 @@
           </div>
         </div>
       </div>
+      <!-- right bar (chatbox) -->
       <div class="right">
+        <!-- contact info in chatbox if-->
         <div class="top d-flex align-items-center" v-if="selectedContact">
           <div class="chat-image">
             <img :src="selectedContact.avatar" alt="">
@@ -92,6 +111,7 @@
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>
+        <!-- contact info in chatbox else-->
         <div class="top d-flex align-items-center" v-else>
           <div class="chat-image">
           </div>
@@ -109,17 +129,25 @@
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>
+        <!-- chatbox messages area -->
         <div class="chatbox">
-          <div v-for="message in sortedMessages" :class="{ 'message sent': message.status === 'sent', 'message received': message.status === 'received' }">
+          <div 
+          v-for="message in sortedMessages" 
+          :class="{ 'message sent': message.status === 'sent', 'message received': message.status === 'received' }">
             {{ message.message }}
             <p>{{ getMessageTime(message) }}</p>
           </div>
         </div>
+        <!-- chat bar compose a message -->
         <div class="chatbar d-flex align-items-center">
           <div class="emoji-icon ">
             <i class="fa-regular fa-face-smile"></i>
           </div>
-          <input type="text" v-model="newMessageText" @keyup.enter="sendMessage" placeholder="Scrivi un messaggio" class="send-message">
+          <input type="text" 
+          v-model="newMessageText" 
+          @keyup.enter="sendMessage" 
+          placeholder="Scrivi un messaggio" 
+          class="send-message">
           <div class="voice-icon ">
             <i class="fa-solid fa-microphone fa-shake"></i>
           </div>

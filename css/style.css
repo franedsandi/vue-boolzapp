@@ -1,3 +1,4 @@
+/* general */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,14 +24,12 @@
   min-width: 350px;
   width: 30%;
   height: 100%;
-  background-color: green;
   border-right: 1px solid #D6D6D6;
 }
 
 .container .right {
   width: 70%;
   height: 100%;
-  background-color: blue;
 }
 
 .container .top {
@@ -38,12 +37,16 @@
   width: 100%;
   height: 70px;
 }
-
+/* silence block */
 .container .left .blueblock {
   height: 75px;
   background-color: #8EDAFC;
 }
-
+.text a {
+  font-size: 12px;
+  color: black;
+}
+/* search bar block */
 .container .searchbar {
   width: 100%;
   height: 35px;
@@ -61,7 +64,7 @@
   border: 0px;
   padding: 3px;
 }
-
+/* contacts block */
 .contacts {
   height: calc(100% - 35px - 75px - 70px);
   width: 100%;
@@ -73,6 +76,7 @@
   height: 75px;
   border-top: 1px solid lightgrey;
 }
+/* hover */
 .voice-icon:hover,
 .emoji-icon:hover,
 .searchbar:hover,
@@ -87,7 +91,7 @@
 .contact:hover{
   background-color: #E8E7E9;
 }
-
+/* icons 1 */
 .icon,
 .contact-foto,
 .user-foto,
@@ -97,7 +101,7 @@
   padding: 10px;
   height: 75px;
 }
-
+/* circles */
 .silence,
 .contact-foto img,
 .user-foto img,
@@ -109,7 +113,7 @@
   font-size: 20px;
   color: #8EDAFC;
 }
-
+/* contact data space */
 .contact-info {
   width: calc(100% - 75px - 50px);
 }
@@ -124,7 +128,10 @@
 .user-name {
   width: calc(100% - 75px - 120px);
 }
-
+.last-message {
+  font-size: 13px;
+}
+/* icons 2 */
 .stories,
 .messages,
 .options,
@@ -135,7 +142,7 @@
   font-size: 20px;
   color: #B1B1B1;
 }
-
+/* icons 3 */
 .voice-icon,
 .emoji-icon {
   width: 80px;
@@ -143,7 +150,7 @@
   font-size: 20px;
   color: #B1B1B1;
 }
-
+/* chatbox */
 .chatbox {
   background-image: url(../img/mine.jpg);
   width: 100%;
@@ -151,25 +158,11 @@
   padding: 40px 80px;
   overflow: auto;
 }
-
-.text a {
-  font-size: 12px;
-  color: black;
-}
-
+/* chatbox  top */
 .chat-info {
   width: calc(100% - 70px - 120px);
 }
-
-.filler {
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-}
-
-.last-message {
-  font-size: 13px;
-}
+/* contact info in chatbar */
 
 .lasttimeonline {
   font-size: 12px;
@@ -181,7 +174,7 @@
   height: 50px;
   background-color: #FFFFFF;
 }
-
+/* messages */
 .send-message {
   width: calc(100% - 160px);
   border: none;
@@ -203,6 +196,7 @@
   background-color:white; 
   float: left;
 }
+/* sent date */
 .chatbox p{
   margin: 0;
   font-size: 9px;

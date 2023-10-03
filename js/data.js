@@ -1,3 +1,4 @@
+/* contacts info */
 const contacts = [
   {
     name: 'Michele',
