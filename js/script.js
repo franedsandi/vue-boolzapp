@@ -169,6 +169,7 @@ createApp({
           ],
         },
       ],selectedContact: null,
+      activeContact: null,
      };
   },
   methods: {
@@ -216,6 +217,9 @@ createApp({
         });
       }
       return [];
+    },
+    setActiveContact(contact) {
+      this.activeContact = contact;
     },
   },
   computed: {

@@ -57,7 +57,11 @@
           <input type="text" class="search border-0 me-3" placeholder="cerca o inizia una nuova chat">
         </div>
         <div class="contacts">
-          <div v-for="contact in contacts" class="contact d-flex align-items-center" @click="selectContact(contact)">
+          <div 
+          v-for="contact in contacts" 
+          class="contact d-flex align-items-center"
+          @click="setActiveContact(contact)"
+          :class="{ 'active': contact === activeContact }">
             <div class="contact-foto">
               <img :src="contact.avatar" alt="">
             </div>
