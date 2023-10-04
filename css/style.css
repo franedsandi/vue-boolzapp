@@ -181,7 +181,8 @@
   padding: 5px;
 }
 .message-size{
-  width: calc(100% - 12px);
+  width: calc(100% - 15px);
+  overflow-x: hidden;
 }
 .message{
   clear: both;
@@ -212,7 +213,17 @@
   border: 2px solid grey
 }
 /* dropdown */
+.arrowdown-space{
+  width: 15px;
+}
 .dropdown{
   justify-self:flex-start;
   text-align: end;
+  width: 15px;
+}
+.chatbox .message .dropdown{
+  display: none;
+}
+.chatbox .message:hover .dropdown{
+  display: block;
 }

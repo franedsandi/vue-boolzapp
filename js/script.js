@@ -110,6 +110,12 @@ createApp({
           this.selectedContact.messages.push(receivedMessage);
         }, 1000); // 1000 ms = 1 segundo
       }
+    },
+    deleteMessage(message) {
+      const index = this.selectedContact.messages.indexOf(message);
+      if (index !== -1) {
+        this.selectedContact.messages.splice(index, 1);
+      }
     }
   },
   computed: {

@@ -139,13 +139,15 @@
               {{ message.message }}
               <p>{{ getMessageTime(message) }}</p>
             </div>
-            <div class="dropdown ">
-              <button class="btn dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Message Info</a></li>
-                <li><a class="dropdown-item" href="#">Delete Message</a></li>
-              </ul>
+            <div class="arrowdown-space">
+              <div class="dropdown ">
+                <button class="btn dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Message Info</a></li>
+                  <li @click="deleteMessage(message)"><a class="dropdown-item" href="#">Delete Message</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
