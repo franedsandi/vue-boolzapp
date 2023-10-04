@@ -132,10 +132,21 @@
         <!-- chatbox messages area -->
         <div class="chatbox">
           <div 
-          v-for="message in sortedMessages" 
+          v-for="message in sortedMessages"
+          class="d-flex justify-content-between"
           :class="{ 'message sent': message.status === 'sent', 'message received': message.status === 'received' }">
-            {{ message.message }}
-            <p>{{ getMessageTime(message) }}</p>
+            <div class="message-size">
+              {{ message.message }}
+              <p>{{ getMessageTime(message) }}</p>
+            </div>
+            <div class="dropdown ">
+              <button class="btn dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Message Info</a></li>
+                <li><a class="dropdown-item" href="#">Delete Message</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         <!-- chat bar compose a message -->

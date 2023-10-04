@@ -1,7 +1,6 @@
+const { createApp } = Vue;
 /* import from data */
 import contacts from "./data.js";
-const { createApp } = Vue;
-
 createApp({
   data() {
     return {
@@ -9,7 +8,7 @@ createApp({
         name: 'Sofia',
         avatar: './img/avatar_io.jpg',
       },
-      contacts: contacts,
+      contacts,
       selectedContact: null,
       activeContactIndex: null,
       newMessageText: '',

@@ -180,12 +180,16 @@
   border: none;
   padding: 5px;
 }
+.message-size{
+  width: calc(100% - 12px);
+}
 .message{
   clear: both;
   border-radius: 10px;
   padding: 5px 10px;
   margin-bottom: 5px;
   min-width: 230px;
+  max-width: 400px;
 }
 .sent {
   background-color: #D5F9BA; 
@@ -206,4 +210,9 @@
 .active{
   background-color: #E8E7E9;
   border: 2px solid grey
+}
+/* dropdown */
+.dropdown{
+  justify-self:flex-start;
+  text-align: end;
 }
