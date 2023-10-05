@@ -115,7 +115,7 @@ createApp({
     deleteMessage(message) {
       const index = this.selectedContact.messages.indexOf(message);
       if (index !== -1) {
-        this.selectedContact.messages[index].message = '"the message has been deleted"';
+        this.selectedContact.messages[index].message = '"the message has been deleted!"';
       }
     },
   },
