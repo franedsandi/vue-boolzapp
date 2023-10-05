@@ -108,9 +108,10 @@ createApp({
             status: 'received',
           };
           this.selectedContact.messages.push(receivedMessage);
-        }, 1000); // 1000 ms = 1 segundo
+        }, 1000);
       }
     },
+    /* delete message */
     deleteMessage(message) {
       const index = this.selectedContact.messages.indexOf(message);
       if (index !== -1) {
