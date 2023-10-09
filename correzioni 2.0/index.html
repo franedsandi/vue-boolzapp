@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Luxon  -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js' integrity='sha512-KKbQg5o92MwtJKR9sfm/HkREzfyzNMiKPIQ7i7SZOxwEdiNCm4Svayn2DBq7MKEdrqPJUOSIpy1v6PpFlCQ0YA==' crossorigin='anonymous'></script>
@@ -46,8 +46,6 @@
             </label>
             <input
               id="contacts-filter"
-              v-model.trim="searchString"
-              @keyup="search"
               class="left-searchbar-input"
               name="search"
               placeholder="Cerca o inizia una nuova chat"
@@ -58,54 +56,23 @@
         <div class="contacts">
 
             <!-- contatto  -->
-           <div class="contact">
+           <div 
+           v-for="contact in contacts" 
+           class="contact"
+           :class="{'active': contact === activeContact}"
+           @click="activeContact = contact">
                 <div class="contact-logo">
-                    <img src="../img/avatar_2.jpg" alt="...">
+                    <img :src="`../${contact.avatar}`" alt="{{contact.name}}">
                 </div>
                 <div class="contact-info">
                     <h3>
-                        <span class="contact-name">Nome ... </span>
-                        <span class="time f-right">00/00/00 00:00:00</span>
+                        <span class="contact-name">{{contact.name}}</span>
+                        <span class="time f-right">{{ getLastDate(contact) }}</span>
                     </h3>
-                    <small>Ultimo messaggio</small>
+                    <small>{{ getLastMessage(contact) }}</small>
                     
                 </div>
             </div>
-            <!-- /contatto  -->
-
-            <!-- contatto  -->
-           <div class="contact">
-                <div class="contact-logo">
-                    <img src="../img/avatar_2.jpg" alt="...">
-                </div>
-                <div class="contact-info">
-                    <h3>
-                        <span class="contact-name">Nome ... </span>
-                        <span class="time f-right">00/00/00 00:00:00</span>
-                    </h3>
-                    <small>Ultimo messaggio</small>
-                    
-                </div>
-            </div>
-            <!-- /contatto  -->
-
-            <!-- contatto  -->
-           <div class="contact">
-                <div class="contact-logo">
-                    <img src="../img/avatar_2.jpg" alt="...">
-                </div>
-                <div class="contact-info">
-                    <h3>
-                        <span class="contact-name">Nome ... </span>
-                        <span class="time f-right">00/00/00 00:00:00</span>
-                    </h3>
-                    <small>Ultimo messaggio</small>
-                    
-                </div>
-            </div>
-            <!-- /contatto  -->
-
-
         </div>
         <!-- /contacts -->
     </div>
@@ -115,9 +82,9 @@
     <div class="right">
         <div class="header-right">
             <div class="header-right-logo">
-                <img src="../img/avatar_2.jpg" alt="...">
-                <h3><span id="header-right-contact-name">Nome contatto attivo</span> <br>
-                  <small class="time">Ultimo messaggio:  00/00/00 00:00:00</small></h3>
+                <img :src="`../${activeContact.avatar}`" :alt="activeContact.name">
+                <h3><span id="header-right-contact-name">{{activeContact.name}}</span> <br>
+                  <small class="time">Ultimo messaggio:  {{getLastDate(activeContact)}}</small></h3>
             </div>
             <div class="header-right-icons">
                 <i class="fas fa-search"></i>
@@ -129,19 +96,12 @@
 
             <!-- contenitore messaggi -->
             <div class="right-messages">
-
-                <div class="message recived">
-                    <div class="message-text">Messaggio ricevuto</div>
-                    <div class="message-time">00/00/00 00:00:00</div>
+                <div class="message"
+                v-for="message in activeContact.messages"
+                :class="message.status">
+                    <div class="message-text">{{message.message}}</div>
+                    <div class="message-time">{{message.date}}</div>
                 </div>
-               
-
-                <div class="message sent">
-                    <div class="message-text">Messaggio spedito</div>
-                    <div class="message-time">00/00/00 00:00:00</div>
-                </div>
-               
-                
             </div>
             <!-- //contenitore messaggi -->
 
@@ -150,7 +110,11 @@
             <div class="right-footer-icon f-left">
                 <i class="far fa-smile"></i>
             </div>
-            <input class="new-message-inputs"  placeholder="Scrivi un messaggio">
+            <input 
+            class="new-message-inputs"  
+            placeholder="Scrivi un messaggio"
+            v-model.trim="newMessageStr"
+            @keyup.enter="sendNewMessage">
             <div class="right-footer-icon f-right">
                 <i class="fa fa-microphone" aria-hidden="true"></i>
             </div>
@@ -161,7 +125,7 @@
 
 </div>
 
-<script src="main.js"></script>
+<script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
